@@ -5,7 +5,8 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const RegisterRoute = require("./routes/auth");
+const authRoute = require("./routes/auth");
+// const userRoute = require("./routes/user");
 
 app.use(express.json());
 
@@ -14,7 +15,8 @@ mongoose
   .then(() => console.log("MongoDB connection established."))
   .catch((error) => console.error("MongoDB connection failed:", error.message));
 
-app.use("/api/auth", RegisterRoute);
+app.use("/api/auth", authRoute);
+// app.use("/api/users", userRoute);
 app.listen(5000, () => {
   console.log("Backend is running");
 });
